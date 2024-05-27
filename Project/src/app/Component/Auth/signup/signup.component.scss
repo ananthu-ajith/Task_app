@@ -1,0 +1,159 @@
+main {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-image: url(../../../../assets/Images/signup.jpg);
+  background-size: cover;
+  background-position: center;
+ 
+
+  .formcontainer {
+    width: 40%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.2);
+    right: 0;
+
+    h1 {
+      text-align: center;
+      margin-top: 5vh;
+      color: white;
+    }
+
+    .intro {
+      text-align: center;
+      margin-top: 3vh;
+      margin-bottom: 5%;
+      font-size: 18px;
+      font-weight: 550;
+      color: white;
+    }
+
+    form {
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+
+      section
+      {
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        label
+      {
+        display: inline-block;
+        width: 100px;
+        height: 22px;
+        color: white;
+        font-weight: 550;
+        
+
+      }
+
+      input[type="email"],
+      input[type="text"],
+      input[type="password"]
+      {
+        height: 30px;
+        width: 100%;
+        padding: 0 10px;
+        border: 1px solid rgb(255, 255, 255);
+        cursor: pointer;
+        background-color: rgb(78, 73, 73);
+        color: white;
+        font-size: 18px;
+      }
+
+      .validate
+      {
+        position: absolute;
+        bottom: 0;
+        font-weight: 550;
+        transform: translateY(90%);
+      }
+
+      input[type="file"]
+      {
+        
+        display: none;
+
+
+        & + label {
+            display: inline-block;
+            background-color: rgb(78, 73, 73); 
+            color: white;  
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-size: 18px; 
+            text-align: center;
+            padding: 4px 0;
+            width: 100%;
+            box-sizing: border-box; 
+            transition: background-color 0.3s ease;
+            height: 30px;
+            border: 1px solid white;
+    
+            
+            &:hover {
+                background-color: darken(rgb(78, 73, 73), 10%);  
+            }
+        }
+
+       
+      }
+
+
+      }
+
+      button
+      {
+        height: 35px;
+        width: 100%;
+        cursor: pointer;
+        background-color: rgb(49, 190, 255);
+        transition: background-color 0.5s ease-in-out;
+        font-size: 20px;
+        color: white;
+        border: 1px solid black;
+      }
+
+      button:hover
+      {
+        
+            background-color: darken(rgb(49, 190, 255), 20%);  /* Darken button color on hover */
+        
+      }
+
+      
+    }
+
+    .log
+    {
+        max-width: 400px;
+        margin: 0 auto;
+        margin-top: 5% ;
+
+        label
+        {
+            color: white;
+            display: inline-block;
+            font-size: 16px;
+        }
+        a
+        {
+            text-decoration: none;
+            margin-left: 10px;
+            color: rgb(15, 224, 231);
+            font-size: 16px;
+
+        }
+        
+    }
+
+
+  }
+}

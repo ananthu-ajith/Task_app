@@ -1,0 +1,122 @@
+main {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../../../../assets/Images/login.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+
+  .formcontainer {
+    width: 40%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 50px 30px;
+
+    form
+    {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content:space-between;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+
+    
+        section {
+          display: flex;
+          flex-direction: column;
+    
+          label
+          {
+            display: inline-block;
+            width: 100px;
+            height: 22px;
+            color: white;
+            font-weight: 540;
+          }
+    
+          input
+          {
+            height: 30px;
+            width: 100%;
+            padding: 0 10px;
+            border: 1px solid rgb(255, 255, 255);
+            cursor: pointer;
+            background-color: rgb(78, 73, 73);
+            color: white;
+            font-size: 18px;
+          }
+        }
+
+        button
+      {
+        height: 35px;
+        width: 100%;
+        cursor: pointer;
+        background-color: rgb(49, 190, 255);
+        transition: background-color 0.5s ease-in-out;
+        font-size: 20px;
+        color: white;
+        border: 1px solid black;
+      }
+
+      button:hover
+      {
+        
+            background-color: darken(rgb(49, 190, 255), 20%);  
+        
+      }
+    }
+ 
+    .sign
+    {
+        max-width: 400px;
+        // margin: 0 auto;
+        margin-top: 10px ;
+
+        label
+        {
+            color: white;
+            display: inline-block;
+            font-size: 16px;
+        }
+        a
+        {
+            text-decoration: none;
+            margin-left: 10px;
+            color: rgb(15, 224, 231);
+            font-size: 16px;
+
+        }
+        
+    }
+
+  }
+}
+
+@media (min-width: 400px) and (max-width: 800px)
+{
+   
+      .formcontainer
+    {
+        min-width: 65%;
+        min-height: 40%;
+
+        .form
+        {
+          justify-content: space-around !important;
+        }
+        
+        
+    }
+    
+    
+    
+}

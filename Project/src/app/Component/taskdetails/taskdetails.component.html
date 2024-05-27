@@ -1,0 +1,83 @@
+<main>
+  <!-- Button to navigate to the dashboard page -->
+
+  <button class="btn btn-dark" id="backbtn" (click)="back()">Back</button>
+  <h1>Task Editor</h1>
+  @if (edit) {
+
+  <!-- Display the details of the task in read-only mode -->
+
+  <section class="taskdetails">
+    <label>Task Name</label>
+    <p>{{ taskdetils.name }}</p>
+    <label>Description</label>
+    <p>{{ taskdetils.description }}</p>
+    <label>Duedate</label>
+    <p>{{ taskdetils.due_date }}</p>
+    <label>Priority</label>
+    <p>{{ taskdetils.priority }}</p>
+    <label>Assignee</label>
+    <p>{{ taskdetils.assignee }}</p>
+
+    <!-- Button to enable editing -->
+
+    <button class="btn btn-primary" (click)="edittask()">Edit</button>
+  </section>
+  } @else {
+  <section class="taskdetails">
+    <label>Task Name</label>
+    <input type="text" #name [(ngModel)]="taskdetils.name" />
+    <label>Description</label>
+    <textarea
+      name=""
+      id=""
+      cols="30"
+      rows="3"
+      #description
+      [(ngModel)]="taskdetils.description"
+    >
+    </textarea>
+    <label>Due Date</label>
+    <input type="date" #due_date [(ngModel)]="taskdetils.due_date" />
+    <label>Priority</label>
+    <select
+      [(ngModel)]="taskdetils.priority"
+      class="select"
+      aria-label="Default select example"
+    >
+      <option value="Low">Low</option>
+      <option value="High">High</option>
+      <option value="Medium">Medium</option>
+    </select>
+    <!-- Admin Privilege -->
+    @if(userdet.Admin){
+    <label>Assignee</label>
+    <select
+      [(ngModel)]="taskdetils.assignee"
+      class="select"
+      aria-label="Default select example"
+    >
+      <option value="All">All</option>
+      <option
+        *ngFor="let task of users; let id = index"
+        value="{{ task.Username }}"
+      >
+        {{ task.Username }}
+      </option>
+    </select>
+    } @else {
+    <label>Assignee</label>
+    <p>{{ taskdetils.assignee }}</p>
+
+    }
+    <!-- Button to save the task -->
+
+    <button
+      class="btn btn-success"
+      (click)="savetask(name.value, description.value, due_date.value)"
+    >
+      Save
+    </button>
+  </section>
+  }
+</main>

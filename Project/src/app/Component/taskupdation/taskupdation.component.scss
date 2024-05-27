@@ -1,0 +1,92 @@
+h1
+    {
+        font-size: 26px;
+        font-weight: 700; 
+        text-align: center; 
+        color: rgb(78, 73, 73); 
+        margin-bottom: 3vh; 
+        margin-top: 5vh;
+    }
+
+main {
+  height: 100vh;
+  width: 100%;
+  padding: 1px;
+  position: relative;
+
+
+  #backbtn{
+    position: absolute;
+    top:5vh;
+    right:50px;
+  }
+
+  
+
+  .newtask
+  {
+    height: 80vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    background-color: rgba(116, 111, 111, 0.1);
+    border-radius: 10px;
+    
+
+    section
+    {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        label
+        {
+            display: inline-block;
+        width: 100px;
+        height: 22px;
+        // color: white;
+        font-weight: 550;
+        }
+        input,select
+        {
+            height: 30px;
+            padding: 0 10px;
+            width: 100%;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+        textarea{
+            padding: 5px 10px;
+            width: 100%;
+            border: 1px solid black;
+            margin-top: 10px;
+            height: 60px;
+        }
+        .validate{
+          position: absolute;
+        bottom: 0;
+        font-weight: 550;
+        transform: translateY(90%);
+        }
+    }
+    .add
+    {
+        width: 100px;
+        margin: auto;
+
+    }
+
+
+  }
+
+  #table{
+    width: 80%;
+    margin: auto;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+  }
+
+}

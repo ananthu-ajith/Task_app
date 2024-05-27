@@ -1,0 +1,37 @@
+<main>
+
+        <!-- Container for the form -->
+
+    <div class="formcontainer">
+    <form class="form" [formGroup]="form">
+
+        <!-- Username -->
+
+        <section>
+        <label>Username</label>
+        <input type="text" formControlName="Username">
+    </section>
+
+    <!-- Password -->
+
+    <section>
+        <label>Password</label>
+        <input type="password" formControlName="Password">
+    </section>
+
+    <!-- Login -->
+
+        <button type="submit" (click)="login()">Log in</button>
+    </form>
+
+    <!-- Link to Signup -->
+
+    <div class="sign">
+        <label>Don't have an account?</label> 
+        <a routerLink="" routerLinkActive="active">Sign Up</a>
+        
+    </div>
+</div>
+</main>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,174 @@
+<main>
+  <h1>Create New Task</h1>
+
+  <!-- Back button to navigate to the dashoard page -->
+
+  <button class="btn btn-dark" id="backbtn" (click)="back()">Back</button>
+
+  <!-- New Task -->
+  <form class="newtask" [formGroup]="form">
+    <!-- Task name -->
+
+    <section>
+      <label>Task name</label>
+      <input type="text" #taskname formControlName="name" required />
+
+      <!-- Error messages -->
+
+      <div
+        class="text-danger validate"
+        *ngIf="
+          form.controls['name'].invalid &&
+          (form.controls['name'].touched ||
+            form.controls['name'].dirty ||
+            triggercal)
+        "
+      >
+        <span *ngIf="form.controls['name'].errors?.['required']"
+          >Mandatory</span
+        >
+        <span *ngIf="form.controls['name'].errors?.['minlength']"
+          >Too short</span
+        >
+        <span *ngIf="form.controls['name'].errors?.['maxlength']"
+          >Too Long</span
+        >
+      </div>
+    </section>
+
+    <!-- Description -->
+
+    <section>
+      <label>Description</label>
+      <textarea
+        name=""
+        id=""
+        cols="30"
+        rows="3"
+        #description
+        formControlName="description"
+      ></textarea>
+
+      <!-- Error messages -->
+
+      <div
+        class="text-danger validate"
+        *ngIf="
+          form.controls['description'].invalid &&
+          (form.controls['description'].touched ||
+            form.controls['description'].dirty ||
+            triggercal)
+        "
+      >
+        <span *ngIf="form.controls['description'].errors?.['required']"
+          >Mandatory</span
+        >
+        <span *ngIf="form.controls['description'].errors?.['minlength']"
+          >Too short</span
+        >
+      </div>
+    </section>
+
+    <!-- Due date -->
+
+
+    <section>
+      <label>Due date</label>
+      <input type="date" #due formControlName="due_date" />
+
+      <!-- Error messages -->
+      
+      <div
+        class="text-danger validate"
+        *ngIf="
+          form.controls['due_date'].invalid &&
+          (form.controls['due_date'].touched ||
+            form.controls['due_date'].dirty ||
+            triggercal)
+        "
+      >
+        <span *ngIf="form.controls['due_date'].errors?.['required']"
+          >Mandatory</span
+        >
+        <span *ngIf="form.controls['due_date'].errors?.['minlength']"
+          >Too short</span
+        >
+      </div>
+    </section>
+
+    <!-- Priority -->
+
+    <section>
+      <label>Priority</label>
+      <select id="prio" formControlName="priority" #updatedpri>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </section>
+
+    <!-- Assignee -->
+
+    <section>
+      <label>Assign To</label>
+      <select formControlName="assignee" #assignee>
+        <option value="All" selected>All</option>
+        <option
+          *ngFor="let task of users; let id = index"
+          value="{{ task.Username }}"
+        >
+          {{ task.Username }}
+        </option>
+      </select>
+    </section>
+    <section>
+      <button
+        type="submit"
+        class="btn btn-primary add"
+        (click)="
+          submit(taskname.value, due.value, updatedpri.value, description.value)
+        "
+      >
+        Add
+      </button>
+    </section>
+  </form>
+
+  <h1>Pending Tasks</h1>
+
+  <!-- Table   -->
+  <table id="table" class="table table-hover">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Due date</th>
+        <th>Priority</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of combined; let id = index">
+        <td>{{ task.name }}</td>
+        <td>{{ task.due_date }}</td>
+        <td>{{ task.priority }}</td>
+        <td>
+          <button
+            type="submit"
+            class="btn btn-outline-danger"
+            (click)="delete(task.id)"
+          >
+            Delete
+          </button>
+        </td>
+        <td>
+          <button
+            type="submit"
+            class="btn btn-outline-success"
+            (click)="complete(task.id)"
+          >
+            Set as complete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</main>

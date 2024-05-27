@@ -1,0 +1,115 @@
+<main>
+
+    <!-- Heading section -->
+
+
+<section id="heading">
+    
+  <!-- Profile button -->
+
+<section class="pr">
+    <button id="profilebtn" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"> 
+
+      <!-- icon -->
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>Profile    
+    </button>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">Profile
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"> </button>
+  </div>
+  <div class="offcanvas-body">
+
+    <!-- Button to go to profile page -->
+
+    <button id="profilego" class="btn btn-outline-primary" (click)="profile()">Go To Profile</button>
+    
+  </div>
+</div>
+    </section>
+
+            <!-- Section for filter dropdown -->
+
+    <section>
+    <label>Filter</label>
+
+<select id="filter" [(ngModel)]="filtertype" (change)="filterchange()" class="form-select form-select-sm" aria-label="Small select example">
+    <option value="Pending" selected>Pending</option>
+    <option value="All">All Tasks</option>
+    <option value="Completed">Completed</option>
+    <option value="Overdue">Overdue</option>
+  </select>
+</section>
+
+        <!-- Button to create a new task -->
+
+<section>
+<button id="createbtn" class="btn btn-primary" (click)="create()">Create new Task</button>
+</section>
+
+</section>
+
+
+<!-- table -->
+
+
+<table id="maintable" class="table table-hover">
+    <thead>
+        <tr>
+        <th>Task</th>
+        <th>Due date 
+           @if(sortchange){<button id="sortbtn" (click)="sortasc()"></button>
+        <label for="sortbtn">
+          <!-- icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z"/>
+              </svg>
+        </label> 
+    } 
+           @else{<button id="sortbtn" (click)="sortdesc()"></button>
+            <label for="sortbtn">
+              <!-- icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0m-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707z"/>
+              </svg>
+            </label>
+        }
+        </th>
+        <th class="mobileview">Priority</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let task of combined; let id =index">
+        <td>{{task.name}}</td>
+        <td>{{task.due_date}}</td>
+        <td class="mobileview">{{task.priority}}</td>
+        <td><button (click)="show(task.id)" type="button" class="btn btn-outline-info">Task details</button></td>
+        
+        @if (task.status=='Pending') {
+            <td> <button (click)="completed(task.id)" type="button" class="btn btn-outline-success">Set As Complete</button></td>
+            <td> <button (click)="delete(task.id)" type="button" class="btn btn-outline-danger">Delete</button></td>
+        }
+        @else {
+            <td> <button class="btn btn-secondary" disabled>Completed</button></td>
+                <td> <button class="btn btn-outline-danger" (click)="deletecompleted(task.id)">Delete</button></td>
+        }
+        
+    </tr>
+    
+</tbody>
+</table>
+
+
+    <!-- Canvas element for a chart -->
+
+
+<canvas id="chrt"></canvas>
+
+</main>
+
+
+
+
